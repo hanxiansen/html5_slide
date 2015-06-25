@@ -111,12 +111,38 @@
 		.slider .ctrl .ctrl-i_active img {
 			opacity: 0;
 		}
+		/* 幻灯片的切换样式 */
+		.slider .main .main-i {
+			opacity: 0;
+			position: absolute;
+			right: 50%;
+			top: 0;
+			-webkit-transition: all .5s;
+		}
+		.slider .main .main-i_active {
+			opacity: 1;
+			right: 0;
+		}
+		.slider .main .main-i h2 {
+			margin-right: 45px;
+		}
+		.slider .main .main-i h3 {
+			margin-right: -45px;
+		}
+		.slider .main .main-i h2,
+		.slider .main .main-i h3 {
+			-webkit-transition: all .8s 1s;
+		}
+		.slider .main .main-i_active h2,
+		.slider .main .main-i_active h3 {
+			margin-right: 0;
+		}
 	</style>
 </head>
 <body>
 	<div class="slider">
 		<div class="main">
-			<div class="main-i">
+			<div class="main-i main-i_active">
 				<div class="caption">
 					<h2>h2 caption</h2>
 					<h3>h3 caption</h3>
