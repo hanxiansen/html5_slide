@@ -34,7 +34,7 @@
 			width: 100%;
 			position: absolute;
 			left: 0;
-			top: 0;
+			top: 50%;
 			z-index: 1;
 		}
 		.slider .main .main-i .caption {
@@ -130,11 +130,16 @@
 		}
 		.slider .main .main-i h2,
 		.slider .main .main-i h3 {
-			-webkit-transition: all .8s 1s;
+			opacity: 0;
+			-webkit-transition: all 1s 0.8s;
 		}
 		.slider .main .main-i_active h2,
 		.slider .main .main-i_active h3 {
+			opacity: 1;
 			margin-right: 0;
+		}
+		.slider .main .main-i .caption {
+			margin-right: 13%;
 		}
 	</style>
 </head>
@@ -144,10 +149,10 @@
 		<div class="main" id="template_main">
 			<div class="main-i" id="main_{{index}}">
 				<div class="caption">
-					<h2>{{h2}}</h2>
-					<h3>{{h3}}</h3>
+					<h2>{{h1}}</h2>
+					<h3>{{h2}}</h3>
 				</div>
-				<img src="imgs/{{index}}.jpg" alt="" />
+				<img src="imgs/{{index}}.jpg" class="picture" />
 			</div>
 		</div>
 		<div class="ctrl" id="template_ctrl">
@@ -233,6 +238,19 @@
 		window.onload = function() {
 			addSliders();
 			switchSlider(2);
+			//因为图片都死通过脚本动态添加的，所有需要设置一个时间间隔知道movePictures执行
+			setTimeout(function() {
+				movePictures();
+			}, 100);
+			
+		}
+
+		// 动态调整图片的 margin-top 以使其垂直居中
+		function movePictures() {
+			var pictures = g('.picture');
+			for (var i = 0; i <pictures.length; i++) {
+				pictures[i].style.marginTop = (pictures[i].clientHeight/2 * -1) + 'px';
+			}
 		}
 
 	</script>
